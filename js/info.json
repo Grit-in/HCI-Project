@@ -1,0 +1,34 @@
+{
+    "filters": {
+      "characters": ["juri","ryu", "ken", "chun-li", "guile", "zangief"],
+      "secondaryFilters": {
+        "juri": ["SafeJumps","BnBs"],
+        "ryu": ["Hadouken", "Shoryuken", "Tatsumaki"],
+        "ken": ["Flaming Shoryuken", "Dragon Punch"],
+        "chun_li": ["Lightning Legs", "Spinning Bird Kick"],
+        "guile": ["Sonic Boom", "Flash Kick"],
+        "zangief": ["Spinning Piledriver", "Lariat"]
+      }
+    },
+    "videos": [
+      {
+        "title": "FSE Wakeup fireball setup",
+        "characters": ["juri"],
+        "keywords": ["tutorial", "beginner"],
+        "videoSrc": "../videos/2024-12-19 17-52-42.mp4"
+      },
+      {
+        "title": "FSE Safe Jump 0 store",
+        "characters": ["juri"],
+        "keywords": ["combo", "advanced"],
+        "videoSrc": "video2.mp4"
+      },
+      {
+        "title": "Zangief Tutorial",
+        "characters": ["zangief"],
+        "keywords": ["tutorial", "grappler"],
+        "videoSrc": "#"
+      }
+    ]
+  }
+  

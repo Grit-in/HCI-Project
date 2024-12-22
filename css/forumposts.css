@@ -1,0 +1,79 @@
+/* Forum Container */
+.forum-container {
+    margin: 30px;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Forum Title */
+.forum-container h1 {
+    text-align: center;
+    color: #fff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Forum Posts Section */
+.forum-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Individual Forum Post */
+.forum-post {
+    background-color: #2b2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px #f1644b;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover Effect for Each Forum Post */
+.forum-post:hover {
+    transform: scale(1.05);
+    /* Slight zoom effect */
+    box-shadow: 6px 6px 15px #f1644b;
+    /* Enhance shadow on hover */
+}
+
+/* Post Title */
+.forum-post h2 {
+    margin: 0;
+    color: #f1644b;
+    font-size: 1.5rem;
+}
+
+/* Post Description */
+.forum-post p {
+    color: #bbb;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Post Author */
+.post-author {
+    font-style: italic;
+    color: #ddd;
+    font-size: 0.9rem;
+    margin-top: 10px;
+}
+
+/* Read More Button */
+.read-more {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #dd8238;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Read More Button Hover Effect */
+.read-more:hover {
+    background-color: #e5843b;
+}
