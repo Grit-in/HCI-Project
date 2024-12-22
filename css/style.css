@@ -207,8 +207,8 @@ body{
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  background-color: #f4f4f4; /* Lighter background */
-  color: #333; /* Dark text */
+  background-color: #f4f4f4;
+  color: #333;
 }
 
 .popup-form input::placeholder {
@@ -218,21 +218,18 @@ body{
 .popup-form button {
   width: 100%;
   padding: 15px;
-  /* Increased button size */
   background-color: #dd8238f8;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
-  /* Slightly larger font */
 }
 
 .popup-form button:hover {
   background-color: #f1644b;
 }
 
-/* Text Main */
 .main {
   background-color: #141414;
 }
@@ -397,11 +394,8 @@ body{
       rgba(17, 17, 17, 0.6) 100%),
     url('../img/ctrail.jpg');
   background-size: cover;
-  /* Ensures the image covers the entire container */
   background-position: center;
-  /* Centers the image in the container */
   background-repeat: no-repeat;
-  /* Prevents the image from repeating */
   position: relative;
   color: #fff;
 }
@@ -412,11 +406,8 @@ body{
       rgba(17, 17, 17, 0.9) 100%),
     url('../img/evo37.jpg');
   background-size: cover;
-  /* Ensures the image covers the entire container */
   background-position: center;
-  /* Centers the image in the container */
   background-repeat: no-repeat;
-  /* Prevents the image from repeating */
 }
 
 .services__card h2 {
@@ -467,30 +458,30 @@ body{
 }
 
 .icon-table td {
-  padding: 20px; /* Space between icons */
-  background: none; /* Transparent background for table cells */
+  padding: 20px;
+  background: none;
 }
 
 .icon-table td a {
   text-decoration: none;
-  color: #dd8238f8; /* Matches your buttons */
-  font-size: 3rem; /* Icon size */
+  color: #dd8238f8;
+  font-size: 3rem; 
   transition: transform 0.3s ease, color 0.3s ease;
-  background: none; /* Transparent background for links */
+  background: none;
 }
 
 .icon-table td a:hover {
-  color: #f1644b; /* Matches hover effect */
-  transform: scale(1.2); /* Slightly larger on hover */
+  color: #f1644b;
+  transform: scale(1.2);
 }
 
-/* Optional: Icon customization */
+
 .icon-table td a i {
   background: linear-gradient(
     to top,
     #dd7825f8 0%,
     #ad3ea4f8 100%
-  ); /* Gradient to match your buttons */
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: all 0.3s ease;
@@ -501,15 +492,15 @@ body{
     to top,
     #f1644b 0%,
     #e7362d 100%
-  ); /* Hover gradient */
+  );
 }
 
 .info-paragraph {
   background: #141414;
   font-size: 1.2rem;
-  color: #fff; /* Matches text color */
+  color: #fff;
   margin-top: 1rem;
-  background: none; /* Transparent background for the paragraph */
+  background: none;
 }
 
 .logo-container {
@@ -517,15 +508,15 @@ body{
 }
 
 .info-logo {
-  width: 150px; /* Adjust the logo size */
+  width: 150px;
   height: auto;
-  border-radius: 50%; /* Circular logo */
-  border: 2px solid #dd8238f8; /* Matches your buttons */
+  border-radius: 50%;
+  border: 2px solid #dd8238f8;
   padding: 5px;
   transition: transform 0.3s ease;
-  background: none; /* Transparent background for the logo */
+  background: none;
 }
 
 .logo-container:hover .info-logo {
-  transform: scale(1.1); /* Slight zoom on hover */
+  transform: scale(1.1);
 }
