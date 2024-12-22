@@ -201,13 +201,13 @@ video {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 30px; /* Space between image and table */
+  margin-right: 30px;
 }
 
 .character-img {
   width: 100%;
   height: auto;
-  max-width: 200px; /* Limit the size of the image */
+  max-width: 200px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }

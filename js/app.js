@@ -41,7 +41,48 @@ registerTab.addEventListener("click", () => {
   loginForm.classList.remove("active");
 });
 
-// Navbar scroll effect
+// Registration Form Validation reloads 
+registerForm.addEventListener('submit', function (e) {
+  e.preventDefault();
+  
+  const email = document.querySelector('#registerForm input[type="email"]').value;
+  const username = document.querySelector('#registerForm input[type="text"]').value;
+  const password = document.querySelector('#registerForm input[type="password"]:nth-child(1)').value;
+  const confirmPassword = document.querySelector('#registerForm input[type="password"]:nth-child(2)').value;
+  
+  const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+  if (!emailPattern.test(email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  const usernamePattern = /[a-zA-Z]/;
+  if (username.length <= 3 || !usernamePattern.test(username)) {
+    alert("Username must be longer than 3 characters and contain at least one letter.");
+    return;
+  }
+
+  const specialCharPattern = /[!@#$%^&*(),.?":{}|<>]/;
+  if (!specialCharPattern.test(password)) {
+    alert("Password must contain at least one special character.");
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    alert("Passwords do not match.");
+    return;
+  }
+
+  alert("Registration successful!");
+  
+  registerForm.reset();
+  
+  popup.classList.remove("active");
+  popupOverlay.classList.remove("active");
+  location.reload();
+});
+
+// Navbar scroll effect puts orange effect below the navbar
 document.addEventListener("DOMContentLoaded", function () {
   const navbar = document.querySelector(".navbar");
 
@@ -54,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Video data and filters
+// Video data and filters fill put in a json file if my prof lets me use node js
 const videoData = {
   videos: [
     {
@@ -129,7 +170,6 @@ function renderVideoList() {
     videoItem.appendChild(title);
     videoItem.appendChild(videoElement);
 
-    // Optional: Add description if available
     if (video.description) {
       const description = document.createElement("p");
       description.innerText = video.description;
@@ -143,19 +183,18 @@ function renderVideoList() {
 function filterVideos(selectedCharacter) {
   const videos = document.querySelectorAll(".video-item");
 
-  // Show all videos if 'universal' is selected
+
   if (selectedCharacter === "universal") {
     videos.forEach((video) => {
-      video.style.display = "block";  // Show all videos
+      video.style.display = "block";
     });
   } else {
-    // Filter videos based on the selected character
     videos.forEach((video) => {
       const videoCharacters = video.getAttribute("data-characters").split(",");
       if (videoCharacters.includes(selectedCharacter) || selectedCharacter === "universal") {
-        video.style.display = "block";  // Show videos for selected character
+        video.style.display = "block";
       } else {
-        video.style.display = "none";  // Hide videos that do not match
+        video.style.display = "none";
       }
     });
   }
@@ -170,5 +209,3 @@ characterSelect.addEventListener("change", () => {
 document.addEventListener("DOMContentLoaded", function () {
   renderVideoList(); 
 });
-
-

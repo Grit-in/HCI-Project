@@ -1,141 +1,146 @@
 <!DOCTYPE html>
 <html>
- <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FGC Hub</title>
-    <link rel="stylesheet" href="css/style.css"> 
-     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-</head>
-  
-  <body>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+  </head>
 
-  <!--NavBar-->
-  <nav class="navbar">
-       <div class="navbar__container">
-        <a href="index.html" id="navbar__logo"><i class="fas fa-gamepad"></i>SFHub</a>
+  <body>
+    <!--NavBar-->
+    <nav class="navbar">
+      <div class="navbar__container">
+        <a href="index.html" id="navbar__logo"
+          ><i class="fas fa-gamepad"></i>SFHub</a
+        >
         <div class="navbar__toggle" id="menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
         </div>
         <ul class="navbar__menu">
-            <li class="navbar__item">
-                <a href="html/mu.html" class="navbar__links">MatchUp Guide</a>
-            </li>
-            <li class="navbar__item">
-                <a href="html/tech.html" class="navbar__links">Character Guide</a>
-            </li>
-            <li class="navbar__item">
-                <a href="html/forum.html" class="navbar__links">Forum</a>
-            </li>
-            <li class="navbar__item">
-                <a href="html/terminology.html" class="navbar__links">Frame Data</a>
-            </li>
-            <li class="navbar__btn">
-                <a href="#" class="btn" id = "signupBtn">Sign Up</a>
-            </li>
+          <li class="navbar__item">
+            <a href="html/mu.html" class="navbar__links">MatchUp Guide</a>
+          </li>
+          <li class="navbar__item">
+            <a href="html/tech.html" class="navbar__links">Character Guide</a>
+          </li>
+          <li class="navbar__item">
+            <a href="html/forum.html" class="navbar__links">Forum</a>
+          </li>
+          <li class="navbar__item">
+            <a href="html/terminology.html" class="navbar__links">Frame Data</a>
+          </li>
+          <li class="navbar__btn">
+            <a href="#" class="btn" id="signupBtn">Sign Up</a>
+          </li>
         </ul>
-       </div>
-   </nav>
+      </div>
+    </nav>
 
-<div class="popup-overlay" id="popupOverlay"></div>
-<div class="popup" id="popup">
-    <div class="popup-header">
+    <div class="popup-overlay" id="popupOverlay"></div>
+    <div class="popup" id="popup">
+      <div class="popup-header">
         <button class="tab-btn active" id="loginTab">Login</button>
         <button class="tab-btn" id="registerTab">Register</button>
-    </div>
-    <div class="popup-content">
+      </div>
+      <div class="popup-content">
         <form id="loginForm" class="popup-form active">
-            <input type="text" placeholder="Username" required>
-            <input type="password" placeholder="Password" required>
-            <button type="submit">Log In</button>
+          <input type="text" placeholder="Username" required />
+          <input type="password" placeholder="Password" required />
+          <button type="submit">Log In</button>
         </form>
         <form id="registerForm" class="popup-form">
-            <input type="text" placeholder="Username" required>
-            <input type="email" placeholder="Email" required>
-            <input type="password" placeholder="Password" required>
-            <input type="password" placeholder="Confirm Password" required>
-            <button type="submit">Register</button>
+          <input type="text" placeholder="Username" required />
+          <input type="email" placeholder="Email" required />
+          <input type="password" placeholder="Password" required />
+          <input type="password" placeholder="Confirm Password" required />
+          <button type="submit">Register</button>
         </form>
+      </div>
     </div>
-</div>
 
-<div class="main">
-    <div class="main__container">
+    <div class="main">
+      <div class="main__container">
         <div class="main__content">
-        <h1>Website for learning Street Fighter 6 tech</h1>
-        <button class="main__btn" id="signupBtn"><a href="#">Get Started</a>
-        </button>
+          <h1>Website for learning Street Fighter 6 tech</h1>
+          <button class="main__btn" id="signupBtn">
+            <a href="#">Get Started</a>
+          </button>
         </div>
         <div class="main__img--container">
-            <img src="img/sf6logo.jpg" alt="" id="main-img">
+          <img src="img/sf6logo.jpg" alt="" id="main-img" />
         </div>
+      </div>
     </div>
-</div>
 
-<div class="services">
-  <h1>Get your desired rank</h1>
-  <div class="main-img---container">
-    <iframe 
-      src="videos/rankup.gif" 
-      frameborder="0" 
-      allowfullscreen 
-      autoplay 
-      id="main-img2">
-    </iframe>
-  </div>
-  <div class="services__container">
-    <div class="services__card">
-      <h2>Practice and learn characters</h2>
-      <p>Are you Ready?</p>
+    <div class="services">
+      <h1>Get your desired rank</h1>
+      <div class="main-img---container">
+        <iframe
+          src="videos/rankup.gif"
+          frameborder="0"
+          allowfullscreen
+          autoplay
+          id="main-img2"
+        >
+        </iframe>
+      </div>
+      <div class="services__container">
+        <div class="services__card">
+          <h2>Practice and learn characters</h2>
+          <p>Are you Ready?</p>
+        </div>
+        <div class="services__card">
+          <h2>Share epic moments with the fighting game community</h2>
+          <p>Take the leap</p>
+        </div>
+      </div>
     </div>
-    <div class="services__card">
-      <h2>Share epic moments with the fighting game community</h2>
-      <p>Take the leap</p>
-    </div>
-  </div>
-</div>
 
-<div class="icon-table-container">
-    <table class="icon-table">
+    <div class="icon-table-container">
+      <table class="icon-table">
         <tr>
-            <td>
-                <a href="https://youtube.com" target="_blank">
-                    <i class="fab fa-youtube"></i>
-                </a>
-            </td>
-            <td>
-            <!---Nema nove twitter ikonice koristim stariji font awsome--->
-                <a href="https://x.com" target="_blank">
-                    <i class="fab fa-twitter"></i>
-                </a>
-            </td>
-            <td>
-                <a href="https://linkedin.com" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-            </td>
-            <td>
-                <a href="https://instagram.com" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </td>
-             <td>
-                <a href="https://twitch.com" target="_blank">
-                    <i class="fab fa-twitch"></i>
-                </a>
-            </td>
+          <td>
+            <a href="https://youtube.com" target="_blank">
+              <i class="fab fa-youtube"></i>
+            </a>
+          </td>
+          <td>
+            <!---Nema nove twitter ikonice koristim stariji font awsome/no new twitter icon loool--->
+            <a href="https://x.com" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </td>
+          <td>
+            <a href="https://linkedin.com" target="_blank">
+              <i class="fab fa-linkedin"></i>
+            </a>
+          </td>
+          <td>
+            <a href="https://instagram.com" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </td>
+          <td>
+            <a href="https://twitch.com" target="_blank">
+              <i class="fab fa-twitch"></i>
+            </a>
+          </td>
         </tr>
-    </table>
-    <p class="info-paragraph">
-        Created by Grit[Danilo Istijanovic]. Passionate about gaming and learning.
-    </p>
-</div>
-
-
- 
-   <script src="js/app.js"></script>
-
+      </table>
+      <p class="info-paragraph">
+        Created by Grit[Danilo Istijanovic]. Passionate about gaming and
+        learning.
+      </p>
+    </div>
+    <script src="js/app.js"></script>
   </body>
 </html>
