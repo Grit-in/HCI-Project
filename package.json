@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "load-json-file": "^7.0.1",
-    "parse-json": "^8.1.0"
-  }
-}
