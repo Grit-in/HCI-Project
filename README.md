@@ -34,5 +34,5 @@ The project focuses on usability and interface design, and includes **recorded u
 1. **Clone the Repository**:
 
    ```bash
-   git clone https://github.com/your-repo/HCIProject.git
+   git clone https://github.com/Grit-in/HCI-Project
    cd HCIProject
