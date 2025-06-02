@@ -35,4 +35,4 @@ The project focuses on usability and interface design, and includes **recorded u
 
    ```bash
    git clone https://github.com/Grit-in/HCI-Project
-   cd HCIProject
+   cd HCI-Project
