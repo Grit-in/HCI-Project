@@ -40,163 +40,235 @@
       </div>
     </nav>
 
-<div class="mu-main">
-    <div class="character-container">
-        <img src="../img/icons/Terry.jpg" alt="Character" class="character-img">
-    </div>
+    <div class="mu-main">
+        <div class="character-container">
+            <img src="../img/icons/Terry.jpg" alt="Character" class="character-img clickable-image" id="characterImage" onclick="showCharacterDetails()">
+            <h1 id="characterName">Terry Bogard</h1>
+            <p class="character-description">
+                <strong>Terry Bogard</strong> is a <em>versatile character</em> with <u>excellent neutral game</u> and strong pressure options. 
+                His <strong>Power Wave</strong> and <strong>Burn Knuckle</strong> provide solid zoning tools.
+            </p>
+            <div class="character-links">
+                <a href="../docs/terry-guide.pdf" target="_blank" class="doc-link">
+                    <i class="fas fa-file-pdf"></i> Terry Guide PDF
+                </a>
+                <a href="../docs/terry-frame-data.pdf" target="_blank" class="doc-link">
+                    <i class="fas fa-table"></i> Frame Data Sheet
+                </a>
+            </div>
+        </div>
 
-    <div class="moves-table-container">
-        <table id="movesTable" class="moves-table">
-            <thead>
-                <tr>
-                    <th>Move</th>
-                    <th>Startup</th>
-                    <th>Active</th>
-                    <th>Recovery</th>
-                    <th>Cancel</th>
-                    <th>Demage</th>
-                    <th>Guard</th>
-                    <th>On Hit</th>
-                    <th>On Block</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>5LP</td>
-                    <td>4f</td>
-                    <td>3f</td>
-                    <td>7f</td>
-                    <td>Chn Sp SA</td>
-                    <td>300</td>
-                    <td>LH</td>
-                    <td class="positive">+4</td>
-                    <td class="negative">-1</td>
-                </tr>
-                <tr>
-                    <td>5MP</td>
-                    <td>7f</td>
-                    <td>3f</td>
-                    <td>16f</td>
-                    <td>SA Sp TC</td>
-                    <td>700</td>
-                    <td>LH</td>
-                    <td class="positive">+1</td>
-                    <td class="negative">-3</td>
-                </tr>
-                <tr>
-                    <td>5HP</td>
-                    <td>9f</td>
-                    <td>1/3f</td>
-                    <td>18/16f</td>
-                    <td>Sp SA</td>
-                    <td>400x2</td>
-                    <td>LH,LH</td>
-                    <td class="positive">+2</td>
-                    <td class="positive">+1</td>
-                </tr>
-                <tr>
-                    <td>5LK</td>
-                    <td>5f</td>
-                    <td>2f</td>
-                    <td>12f</td>
-                    <td>Sp SA</td>
-                    <td>300</td>
-                    <td>LH</td>
-                    <td class="positive">+2</td>
-                    <td class="negative">-2</td>
-                </tr>
-                <tr>
-                    <td>5MK</td>
-                    <td>9f</td>
-                    <td>18f</td>
-                    <td>7f</td>
-                    <td>-/-</td>
-                    <td>700</td>
-                    <td>LH</td>
-                    <td class="positive">+5</td>
-                    <td class="negative">-2</td>
-                </tr>
-                <tr>
-                    <td>5HK</td>
-                    <td>12f</td>
-                    <td>4f</td>
-                    <td>21f</td>
-                    <td>-/-</td>
-                    <td>300</td>
-                    <td>LH</td>
-                    <td class="positive">+1</td>
-                    <td class="negative">-4</td>
-                </tr>
-                <tr>
-                    <td>2LP</td>
-                    <td>4f</td>
-                    <td>3f</td>
-                    <td>8f</td>
-                    <td>Chn Sp SA</td>
-                    <td>300</td>
-                    <td>LH</td>
-                    <td class="positive">+4</td>
-                    <td class="negative">-1</td>
-                </tr>
-                <tr>
-                    <td>2MP</td>
-                    <td>6f</td>
-                    <td>4f</td>
-                    <td>13/14f</td>
-                    <td>Sp SA</td>
-                    <td>600</td>
-                    <td>LH</td>
-                    <td class="positive">+5</td>
-                    <td class="negative">-1</td>
-                </tr>
-                <tr>
-                    <td>2HP</td>
-                    <td>8f</td>
-                    <td>6/4f</td>
-                    <td>22/20f</td>
-                    <td>Sp SA</td>
-                    <td>800</td>
-                    <td>LH</td>
-                    <td class="positive">+1</td>
-                    <td class="negative">-4</td>
-                </tr>
-                <tr>
-                    <td>2LK</td>
-                    <td>5f</td>
-                    <td>2f</td>
-                    <td>11f</td>
-                    <td>Chn</td>
-                    <td>300</td>
-                    <td>LH</td>
-                    <td class="positive">+3</td>
-                    <td class="negative">-3</td>
-                </tr>
-                <tr>
-                    <td>2MK</td>
-                    <td>8f</td>
-                    <td>3f</td>
-                    <td>19f</td>
-                    <td>Chn Sp TC</td>
-                    <td>300</td>
-                    <td>LH</td>
-                    <td class="positive">-2</td>
-                    <td class="negative">-6</td>
-                </tr>
-                <tr>
-                    <td>2HK</td>
-                    <td>11f</td>
-                    <td>3f</td>
-                    <td>23f</td>
-                    <td>-/-</td>
-                    <td>900</td>
-                    <td>L</td>
-                    <td class="positive">KD +32</td>
-                    <td class="negative">-11</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="character-info">
+            <h2>Character Overview</h2>
+            <div class="info-grid">
+                <div class="info-section">
+                    <h3>Strengths</h3>
+                    <ul>
+                        <li>Excellent neutral game</li>
+                        <li>Strong pressure options</li>
+                        <li>Good zoning tools</li>
+                        <li>Solid anti-air options</li>
+                    </ul>
+                </div>
+                <div class="info-section">
+                    <h3>Weaknesses</h3>
+                    <ol>
+                        <li>Limited defensive options</li>
+                        <li>Vulnerable to cross-ups</li>
+                        <li>Requires meter for optimal damage</li>
+                        <li>Can be predictable</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <div class="moves-table-container">
+            <h2>Frame Data Table</h2>
+            <table id="movesTable" class="moves-table">
+                <thead>
+                    <tr>
+                        <th rowspan="2">Move</th>
+                        <th colspan="3">Frame Data</th>
+                        <th rowspan="2">Cancel</th>
+                        <th rowspan="2">Damage</th>
+                        <th rowspan="2">Guard</th>
+                        <th colspan="2">Frame Advantage</th>
+                    </tr>
+                    <tr>
+                        <th>Startup</th>
+                        <th>Active</th>
+                        <th>Recovery</th>
+                        <th>On Hit</th>
+                        <th>On Block</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>5LP</strong></td>
+                        <td>4f</td>
+                        <td>3f</td>
+                        <td>7f</td>
+                        <td>Chn Sp SA</td>
+                        <td>300</td>
+                        <td>LH</td>
+                        <td class="positive">+4</td>
+                        <td class="negative">-1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5MP</strong></td>
+                        <td>7f</td>
+                        <td>3f</td>
+                        <td>16f</td>
+                        <td>SA Sp TC</td>
+                        <td>700</td>
+                        <td>LH</td>
+                        <td class="positive">+1</td>
+                        <td class="negative">-3</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5HP</strong></td>
+                        <td>9f</td>
+                        <td>1/3f</td>
+                        <td>18/16f</td>
+                        <td>Sp SA</td>
+                        <td>400x2</td>
+                        <td>LH,LH</td>
+                        <td class="positive">+2</td>
+                        <td class="positive">+1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5LK</strong></td>
+                        <td>5f</td>
+                        <td>2f</td>
+                        <td>12f</td>
+                        <td>Sp SA</td>
+                        <td>300</td>
+                        <td>LH</td>
+                        <td class="positive">+2</td>
+                        <td class="negative">-2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5MK</strong></td>
+                        <td>9f</td>
+                        <td>18f</td>
+                        <td>7f</td>
+                        <td>-/-</td>
+                        <td>700</td>
+                        <td>LH</td>
+                        <td class="positive">+5</td>
+                        <td class="negative">-2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5HK</strong></td>
+                        <td>12f</td>
+                        <td>4f</td>
+                        <td>21f</td>
+                        <td>-/-</td>
+                        <td>300</td>
+                        <td>LH</td>
+                        <td class="positive">+1</td>
+                        <td class="negative">-4</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2LP</strong></td>
+                        <td>4f</td>
+                        <td>3f</td>
+                        <td>8f</td>
+                        <td>Chn Sp SA</td>
+                        <td>300</td>
+                        <td>LH</td>
+                        <td class="positive">+4</td>
+                        <td class="negative">-1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2MP</strong></td>
+                        <td>6f</td>
+                        <td>4f</td>
+                        <td>13/14f</td>
+                        <td>Sp SA</td>
+                        <td>600</td>
+                        <td>LH</td>
+                        <td class="positive">+5</td>
+                        <td class="negative">-1</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2HP</strong></td>
+                        <td>8f</td>
+                        <td>6/4f</td>
+                        <td>22/20f</td>
+                        <td>Sp SA</td>
+                        <td>800</td>
+                        <td>LH</td>
+                        <td class="positive">+1</td>
+                        <td class="negative">-4</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2LK</strong></td>
+                        <td>5f</td>
+                        <td>2f</td>
+                        <td>11f</td>
+                        <td>Chn</td>
+                        <td>300</td>
+                        <td>LH</td>
+                        <td class="positive">+3</td>
+                        <td class="negative">-3</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2MK</strong></td>
+                        <td>8f</td>
+                        <td>3f</td>
+                        <td>19f</td>
+                        <td>Chn Sp TC</td>
+                        <td>300</td>
+                        <td>LH</td>
+                        <td class="positive">-2</td>
+                        <td class="negative">-6</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2HK</strong></td>
+                        <td>11f</td>
+                        <td>3f</td>
+                        <td>23f</td>
+                        <td>-/-</td>
+                        <td>900</td>
+                        <td>L</td>
+                        <td class="positive">KD +32</td>
+                        <td class="negative">-11</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="character-selector">
+            <h3>Select Character</h3>
+            <select id="characterSelector" onchange="changeCharacter()">
+                <option value="terry">Terry Bogard</option>
+                <option value="ryu">Ryu</option>
+                <option value="ken">Ken</option>
+                <option value="chun_li">Chun-Li</option>
+                <option value="luke">Luke</option>
+                <option value="jamie">Jamie</option>
+                <option value="juri">Juri</option>
+                <option value="kimberly">Kimberly</option>
+                <option value="guile">Guile</option>
+                <option value="dhalsim">Dhalsim</option>
+                <option value="zangief">Zangief</option>
+                <option value="jp">JP</option>
+                <option value="marisa">Marisa</option>
+                <option value="manon">Manon</option>
+                <option value="deejay">Dee Jay</option>
+                <option value="honda">E.Honda</option>
+                <option value="blanka">Blanka</option>
+                <option value="lily">Lily</option>
+                <option value="cammy">Cammy</option>
+                <option value="rashid">Rashid</option>
+                <option value="aki">A.K.I</option>
+                <option value="ed">Ed</option>
+                <option value="akuma">Akuma</option>
+                <option value="bison">M.Bison</option>
+            </select>
+        </div>
     </div>
-</div>
 
 
     <!-- Popup -->

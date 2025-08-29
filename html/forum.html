@@ -64,21 +64,104 @@
     </div>
 
 <div class="forum-container">
-      <h1>Forum Posts</h1>
-      <div class="forum-posts">
-        <div class="forum-post">
-          <h2 class="post-title">How does this combo structure work</h2>
-          <p class="post-description">Can someone help me understand why does this work?</p>
-          <p class="post-author">Posted by: User123</p>
+      <h1>Community Forum</h1>
+      <p class="forum-description">
+        <strong>Welcome to the SFHub community!</strong> Share your <em>strategies</em>, ask questions, and discuss <u>Street Fighter 6</u> with fellow players.
+      </p>
+      
+      <div class="forum-controls">
+        <button id="newPostBtn" class="new-post-btn">Create New Post</button>
+        <select id="categoryFilter" class="category-filter">
+          <option value="all">All Categories</option>
+          <option value="general">General Discussion</option>
+          <option value="strategy">Strategy & Tips</option>
+          <option value="character">Character Discussion</option>
+          <option value="tournament">Tournament Talk</option>
+        </select>
+      </div>
+
+      <div class="forum-posts" id="forumPosts">
+        <div class="forum-post" data-category="strategy">
+          <h2 class="post-title">How does this combo structure work?</h2>
+          <p class="post-description">Can someone help me understand why does this work? I'm trying to learn <strong>Terry's</strong> optimal combos but the timing seems impossible.</p>
+          <div class="post-meta">
+            <p class="post-author">Posted by: <em>User123</em></p>
+            <p class="post-date">Date: <u>2024-01-15</u></p>
+            <p class="post-category">Category: Strategy & Tips</p>
+          </div>
+          <div class="post-stats">
+            <span class="views">👁️ 45 views</span>
+            <span class="replies">💬 8 replies</span>
+          </div>
           <a href="../html/forumtest.html" class="read-more">Read More</a>
         </div>
-        <div class="forum-post">
-          <h2 class="post-title">How does neutral play actually work</h2>
-          <p class="post-description">Can someone explain to me how to be better at whiff punishing and anti airs</p>
-          <p class="post-author">Posted by: Izzy</p>
+        
+        <div class="forum-post" data-category="character">
+          <h2 class="post-title">How does neutral play actually work?</h2>
+          <p class="post-description">Can someone explain to me how to be better at <strong>whiff punishing</strong> and <em>anti-airs</em>? I keep getting destroyed in neutral.</p>
+          <div class="post-meta">
+            <p class="post-author">Posted by: <em>Izzy</em></p>
+            <p class="post-date">Date: <u>2024-01-14</u></p>
+            <p class="post-category">Category: Character Discussion</p>
+          </div>
+          <div class="post-stats">
+            <span class="views">👁️ 67 views</span>
+            <span class="replies">💬 12 replies</span>
+          </div>
+          <a href="../html/forumtest.html" class="read-more">Read More</a>
+        </div>
+        
+        <div class="forum-post" data-category="general">
+          <h2 class="post-title">Best controller for Street Fighter 6?</h2>
+          <p class="post-description">I'm looking to upgrade my controller setup. What do you recommend for <strong>competitive play</strong>?</p>
+          <div class="post-meta">
+            <p class="post-author">Posted by: <em>FGC_Player</em></p>
+            <p class="post-date">Date: <u>2024-01-13</u></p>
+            <p class="post-category">Category: General Discussion</p>
+          </div>
+          <div class="post-stats">
+            <span class="views">👁️ 89 views</span>
+            <span class="replies">💬 15 replies</span>
+          </div>
+          <a href="../html/forumtest.html" class="read-more">Read More</a>
+        </div>
+        
+        <div class="forum-post" data-category="tournament">
+          <h2 class="post-title">Upcoming tournament strategies</h2>
+          <p class="post-description">What are your thoughts on the <em>current meta</em> for tournament play? Which characters are <strong>top tier</strong> right now?</p>
+          <div class="post-meta">
+            <p class="post-author">Posted by: <em>TourneyPlayer</em></p>
+            <p class="post-date">Date: <u>2024-01-12</u></p>
+            <p class="post-category">Category: Tournament Talk</p>
+          </div>
+          <div class="post-stats">
+            <span class="views">👁️ 123 views</span>
+            <span class="replies">💬 23 replies</span>
+          </div>
           <a href="../html/forumtest.html" class="read-more">Read More</a>
         </div>
       </div>
+      
+      <!-- New Post Modal -->
+      <div id="newPostModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Create New Post</h2>
+          <form id="newPostForm">
+            <input type="text" id="postTitle" placeholder="Post Title" required>
+            <select id="postCategory" required>
+              <option value="">Select Category</option>
+              <option value="general">General Discussion</option>
+              <option value="strategy">Strategy & Tips</option>
+              <option value="character">Character Discussion</option>
+              <option value="tournament">Tournament Talk</option>
+            </select>
+            <textarea id="postContent" placeholder="Write your post content here..." required></textarea>
+            <button type="submit">Create Post</button>
+          </form>
+        </div>
+      </div>
+    </div>
 <div class="icon-table-container">
     <table class="icon-table">
         <tr>
