@@ -1,110 +1,116 @@
 <template>
-  <div class="character-guide-page">
-    <div class="mu-main">
-      <aside class="filter-sidebar">
-        <h3>Filter Videos</h3>
-        <div class="left-container">
-          <label for="characterSelect">Select Character:</label>
-          <div class="custom-dropdown">
-            <select id="characterSelect" v-model="selectedCharacter" @change="filterVideos">
-              <option value="universal">Universal</option>
-              <option value="terry">Terry</option>
-              <option value="bison">M.Bison</option>
-              <option value="akuma">Akuma</option>
-              <option value="ed">Ed</option>
-              <option value="aki">A.K.I</option>
-              <option value="rashid">Rashid</option>
-              <option value="cammy">Cammy</option>
-              <option value="lily">Lily</option>
-              <option value="zangief">Zangief</option>
-              <option value="jp">JP</option>
-              <option value="marisa">Marisa</option>
-              <option value="manon">Manon</option>
-              <option value="deejay">Dee Jay</option>
-              <option value="honda">E.Honda</option>
-              <option value="blanka">Blanka</option>
-              <option value="juri">Juri</option>
-              <option value="kimberly">Kimberly</option>
-              <option value="guile">Guile</option>
-              <option value="jamie">Jamie</option>
-              <option value="dhalsim">Dhalsim</option>
-              <option value="ryu">Ryu</option>
-              <option value="chun_li">Chun-Li</option>
-              <option value="luke">Luke</option>
-            </select>
+  <div class="character-guide">
+    <!-- Main Content -->
+    <div class="main-container">
+      <!-- Filter Section -->
+      <div class="filter-section">
+        <div class="filter-card">
+          <h2 class="filter-title">Filter Videos</h2>
+          <div class="filter-content">
+            <label class="filter-label">Select Character:</label>
+            <div class="select-wrapper">
+              <select 
+                v-model="selectedCharacter" 
+                @change="filterVideos"
+                class="character-select"
+              >
+                <option value="universal">All Characters</option>
+                <option value="terry">Terry</option>
+                <option value="bison">M.Bison</option>
+                <option value="akuma">Akuma</option>
+                <option value="ed">Ed</option>
+                <option value="aki">A.K.I</option>
+                <option value="rashid">Rashid</option>
+                <option value="cammy">Cammy</option>
+                <option value="lily">Lily</option>
+                <option value="zangief">Zangief</option>
+                <option value="jp">JP</option>
+                <option value="marisa">Marisa</option>
+                <option value="manon">Manon</option>
+                <option value="deejay">Dee Jay</option>
+                <option value="honda">E.Honda</option>
+                <option value="blanka">Blanka</option>
+                <option value="juri">Juri</option>
+                <option value="kimberly">Kimberly</option>
+                <option value="guile">Guile</option>
+                <option value="jamie">Jamie</option>
+                <option value="dhalsim">Dhalsim</option>
+                <option value="ryu">Ryu</option>
+                <option value="chun_li">Chun-Li</option>
+                <option value="luke">Luke</option>
+              </select>
+              <div class="select-arrow">▼</div>
+            </div>
           </div>
         </div>
-      </aside>
-      <div class="videos">
-        <h3>Video List</h3>
-        <section class="video-section" id="videoListContainer">
+      </div>
+
+      <!-- Videos Section -->
+      <div class="videos-section">
+        <div class="videos-header">
+          <h2 class="videos-title">Character Guide Videos</h2>
+          <div class="videos-count">
+            <span>{{ filteredVideos.length }} videos</span>
+          </div>
+        </div>
+
+        <!-- Videos Grid -->
+        <div class="videos-grid" v-if="filteredVideos.length > 0">
           <div 
             v-for="video in filteredVideos" 
             :key="video.title"
-            class="video-item"
-            :data-characters="video.characters.join(',')"
+            class="video-card"
           >
-            <h2>{{ video.title }}</h2>
-            <div class="video-container">
-              <video controls>
+            <div class="video-thumbnail">
+              <video controls class="video-player">
                 <source :src="video.videoSrc" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
             </div>
-            <p v-if="video.description">{{ video.description }}</p>
+            <div class="video-info">
+              <h3 class="video-title">{{ video.title }}</h3>
+              <div class="video-tags">
+                <span 
+                  v-for="character in video.characters.filter(c => c !== 'universal')" 
+                  :key="character"
+                  class="tag character-tag"
+                >
+                  {{ character }}
+                </span>
+                <span 
+                  v-for="keyword in video.keywords" 
+                  :key="keyword"
+                  class="tag keyword-tag"
+                >
+                  {{ keyword }}
+                </span>
+              </div>
+            </div>
           </div>
-          
-          <!-- Empty state when no videos are found -->
-          <div v-if="filteredVideos.length === 0" class="empty-state">
-            <h4>No videos found</h4>
-            <p>Try selecting a different character or check back later for new content.</p>
-          </div>
-        </section>
+        </div>
+
+        <!-- Empty State -->
+        <div v-else class="empty-state">
+          <div class="empty-icon">🎮</div>
+          <h3 class="empty-title">No videos found</h3>
+          <p class="empty-message">Try selecting a different character or check back later for new content.</p>
+        </div>
       </div>
     </div>
-    
-    <div class="icon-table-container">
-      <table class="icon-table">
-        <tbody>
-          <tr>
-            <td>
-              <a href="https://youtube.com" target="_blank">
-                <i class="fab fa-youtube"></i>
-              </a>
-            </td>
-            <td>
-              <a href="https://x.com" target="_blank">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </td>
-            <td>
-              <a href="https://linkedin.com" target="_blank">
-                <i class="fab fa-linkedin"></i>
-              </a>
-            </td>
-            <td>
-              <a href="https://instagram.com" target="_blank">
-                <i class="fab fa-instagram"></i>
-              </a>
-            </td>
-            <td>
-              <a href="https://twitch.com" target="_blank">
-                <i class="fab fa-twitch"></i>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="info-paragraph">
-        Created by Grit[Danilo Istijanovic]. Passionate about gaming and learning.
-      </p>
-    </div>
+
+    <!-- Footer -->
+    <Footer />
   </div>
 </template>
 
 <script>
+import Footer from './Footer.vue'
+
 export default {
   name: 'CharacterGuide',
+  components: {
+    Footer
+  },
   data() {
     return {
       selectedCharacter: 'universal',

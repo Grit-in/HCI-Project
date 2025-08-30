@@ -4,9 +4,6 @@
       <div class="main__container">
         <div class="main__content">
           <h1>Website for learning Street Fighter 6 tech</h1>
-          <button class="main__btn" @click="showSignup">
-            <a href="#">Get Started</a>
-          </button>
         </div>
         <div class="main__img--container">
           <img src="/img/sf6logo.jpg" alt="" id="main-img" />
@@ -31,52 +28,21 @@
       </div>
     </div>
 
-    <div class="icon-table-container">
-      <table class="icon-table">
-        <tbody>
-          <tr>
-            <td>
-              <a href="https://youtube.com" target="_blank">
-                <i class="fab fa-youtube"></i>
-              </a>
-            </td>
-            <td>
-              <a href="https://x.com" target="_blank">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </td>
-            <td>
-              <a href="https://linkedin.com" target="_blank">
-                <i class="fab fa-linkedin"></i>
-              </a>
-            </td>
-            <td>
-              <a href="https://instagram.com" target="_blank">
-                <i class="fab fa-instagram"></i>
-              </a>
-            </td>
-            <td>
-              <a href="https://twitch.com" target="_blank">
-                <i class="fab fa-twitch"></i>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <p class="info-paragraph">
-        Created by Grit[Danilo Istijanovic]. Passionate about gaming and
-        learning.
-      </p>
-    </div>
+    <!-- Footer -->
+    <Footer />
   </div>
 </template>
 
 <script>
+import Footer from './Footer.vue'
+
 export default {
   name: 'Home',
+  components: {
+    Footer
+  },
   methods: {
     showSignup() {
-      // This will be handled by the parent App component
       this.$emit('show-signup')
     }
   }
