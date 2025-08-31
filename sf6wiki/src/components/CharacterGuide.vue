@@ -59,8 +59,6 @@
             </div>
           </div>
         </div>
-        
-        <!-- Videos Grid -->
         <div class="videos-container" v-if="filteredVideos.length > 0">
           <div class="videos-grid">
             <article 
@@ -102,7 +100,6 @@
           </div>
         </div>
 
-        <!-- Empty State -->
         <div v-else class="empty-state">
           <div class="empty-content">
             <div class="empty-icon">🎮</div>
@@ -116,7 +113,6 @@
       </main>
     </div>
 
-    <!-- Footer -->
     <Footer />
   </div>
 </template>
@@ -191,7 +187,7 @@ export default {
       if (!this.selectedCharacter || this.selectedCharacter === '') {
         return this.videoData.videos;
       } else if (this.selectedCharacter === 'universal') {
-        return this.videoData.videos; // Show all videos when universal is selected
+        return this.videoData.videos;
       } else {
         return this.videoData.videos.filter(video => 
           video.characters.includes(this.selectedCharacter)
@@ -201,8 +197,6 @@ export default {
   },
   methods: {
     filterVideos() {
-      // This method is called when the select changes
-      // The filtering is handled by the computed property
       console.log('Filtering videos for:', this.selectedCharacter);
     }
   }

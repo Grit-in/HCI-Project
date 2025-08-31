@@ -1,4 +1,4 @@
-/* Forum Container Styles */
+
 .forum-container {
     max-width: 1200px;
     margin: 2rem auto;
@@ -34,7 +34,7 @@
     color: #4CAF50;
 }
 
-/* Forum Controls */
+
 .forum-controls {
     display: flex;
     justify-content: space-between;
@@ -75,7 +75,7 @@
     box-shadow: 0 0 10px rgba(241, 100, 75, 0.5);
 }
 
-/* Forum Posts */
+
 .forum-posts {
     display: grid;
     gap: 1.5rem;
@@ -176,7 +176,7 @@
     box-shadow: 0 3px 10px rgba(241, 100, 75, 0.4);
 }
 
-/* Modal Styles */
+
 .modal {
     display: none;
     position: fixed;
@@ -268,7 +268,7 @@
     box-shadow: 0 5px 15px rgba(241, 100, 75, 0.4);
 }
 
-/* Animations */
+
 @keyframes slideInFromBottom {
     from {
         opacity: 0;
@@ -300,7 +300,7 @@
     }
 }
 
-/* Responsive Design */
+
 @media screen and (max-width: 768px) {
     .forum-controls {
         flex-direction: column;
@@ -323,7 +323,7 @@
     }
 }
 
-/* Filter Animation */
+
 .forum-post.hidden {
     display: none;
     animation: slideOut 0.3s ease;
@@ -340,7 +340,7 @@
     }
 }
 
-/* Hover effects for interactive elements */
+
 .forum-post {
     cursor: pointer;
 }
@@ -349,7 +349,7 @@
     transform: scale(0.98);
 }
 
-/* Loading animation for new posts */
+
 .loading {
     opacity: 0.5;
     pointer-events: none;
@@ -372,4 +372,114 @@
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+
+.forum-controls {
+    flex-wrap: wrap;
+}
+
+.new-post-btn {
+    background: linear-gradient(45deg, #f1644b, #e98b3e);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.new-post-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(241, 100, 75, 0.4);
+}
+
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.post-title {
+    margin: 0;
+    flex: 1;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #ff6b6b;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    margin-left: 1rem;
+}
+
+.delete-btn:hover {
+    background: rgba(255, 107, 107, 0.1);
+    transform: scale(1.1);
+}
+
+
+.post-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.edit-btn {
+    display: inline-block;
+    background: linear-gradient(45deg, #f1644b, #e98b3e);
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.edit-btn:hover {
+    transform: translateX(5px);
+    box-shadow: 0 3px 10px rgba(241, 100, 75, 0.4);
+}
+
+
+.dynamic-post {
+    animation: slideInFromTop 0.5s ease-out;
+}
+
+
+
+
+.welcome-message {
+    background: linear-gradient(135deg, #f1644b, #e74c3c);
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.welcome-message:hover {
+    transform: scale(1.02);
+}
+
+.welcome-message h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.3rem;
+}
+
+.welcome-message p {
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.9;
 }

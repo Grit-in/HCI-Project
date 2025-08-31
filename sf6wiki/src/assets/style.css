@@ -589,7 +589,7 @@ body{
   transform: scale(1.1);
 }
 
-/* Mobile menu styles */
+
 .navbar__toggle {
   display: none;
   flex-direction: column;

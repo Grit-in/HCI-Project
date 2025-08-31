@@ -1,8 +1,6 @@
 <template>
   <div class="mu-main">
-    <!-- Left Column -->
     <div class="left-column">
-      <!-- Character Selector -->
       <div class="character-selector">
         <h3>Select Character</h3>
         <select v-model="selectedCharacter" @change="changeCharacter">
@@ -12,7 +10,6 @@
         </select>
       </div>
 
-      <!-- Character Info -->
       <div class="character-container">
         <img 
           :src="`/img/icons/${currentCharacter.image}`" 
@@ -33,9 +30,7 @@
       </div>
     </div>
 
-    <!-- Right Column -->
     <div class="right-column">
-      <!-- Frame Data Table -->
       <div class="moves-table-container">
         <h2>Frame Data Table</h2>
         <table class="moves-table">
@@ -72,7 +67,6 @@
         </table>
       </div>
 
-      <!-- Character Overview -->
       <div class="character-info">
         <h2>Character Overview</h2>
         <div class="info-grid">
@@ -93,7 +87,46 @@
     </div>
   </div>
 
-  <!-- Footer -->
+  <div class="modal character-details-modal" :class="{ active: showModal }" @click="closeModal">
+    <div class="modal-content" @click.stop>
+      <span class="close" @click="closeModal">&times;</span>
+      <h2>{{ currentCharacter.name }} - Detailed Information</h2>
+      <div class="character-details">
+        <div class="details-content">
+          <h3>Character Overview</h3>
+          <p v-html="currentCharacter.description"></p>
+          
+          <h3>Strengths</h3>
+          <ul>
+            <li v-for="strength in currentCharacter.strengths" :key="strength">{{ strength }}</li>
+          </ul>
+          
+          <h3>Weaknesses</h3>
+          <ol>
+            <li v-for="weakness in currentCharacter.weaknesses" :key="weakness">{{ weakness }}</li>
+          </ol>
+          
+          <h3>Key Moves</h3>
+          <ul>
+            <li v-for="move in currentCharacter.moves.slice(0, 5)" :key="move.name">
+              <strong>{{ move.name }}</strong>: {{ move.startup }} startup, {{ move.damage }} damage
+            </li>
+          </ul>
+          
+          <h3>Resources</h3>
+          <div class="character-links">
+            <a :href="currentCharacter.guidePdf" target="_blank" class="doc-link">
+              <i class="fas fa-file-pdf"></i> {{ currentCharacter.name }} Guide PDF
+            </a>
+            <a :href="currentCharacter.frameDataPdf" target="_blank" class="doc-link">
+              <i class="fas fa-table"></i> Frame Data Sheet
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <Footer />
 </template>
 
@@ -108,6 +141,7 @@ export default {
   data() {
     return {
       selectedCharacter: 'terry',
+      showModal: false,
       characters: [
         { value: 'terry', name: 'Terry Bogard' },
         { value: 'ryu', name: 'Ryu' },
@@ -170,7 +204,7 @@ export default {
         },
         ryu: {
           name: 'Ryu',
-          image: 'Ryu.jpg',
+          image: 'Ryu.png',
           description: '<strong>Ryu</strong> is a <em>balanced character</em> with <u>solid fundamentals</u> and reliable tools. His <strong>Hadoken</strong> and <strong>Shoryuken</strong> are iconic moves.',
           guidePdf: '/docs/ryu-guide.pdf',
           frameDataPdf: '/docs/ryu-frame-data.pdf',
@@ -189,10 +223,66 @@ export default {
           moves: [
             { name: '5LP', startup: '4f', active: '3f', recovery: '7f', cancel: 'Chn Sp SA', damage: '300', guard: 'LH', onHit: '+4', onBlock: '-1' },
             { name: '5MP', startup: '7f', active: '3f', recovery: '16f', cancel: 'SA Sp TC', damage: '700', guard: 'LH', onHit: '+1', onBlock: '-3' },
-            { name: '5HP', startup: '9f', active: '1/3f', recovery: '18/16f', cancel: 'Sp SA', damage: '400x2', guard: 'LH,LH', onHit: '+2', onBlock: '+1' }
+            { name: '5HP', startup: '9f', active: '1/3f', recovery: '18/16f', cancel: 'Sp SA', damage: '400x2', guard: 'LH,LH', onHit: '+2', onBlock: '+1' },
+            { name: '2LP', startup: '4f', active: '3f', recovery: '8f', cancel: 'Chn Sp SA', damage: '300', guard: 'LH', onHit: '+4', onBlock: '-1' },
+            { name: '2MP', startup: '6f', active: '4f', recovery: '13/14f', cancel: 'Sp SA', damage: '600', guard: 'LH', onHit: '+5', onBlock: '-1' },
+            { name: '2HP', startup: '8f', active: '6/4f', recovery: '22/20f', cancel: 'Sp SA', damage: '800', guard: 'LH', onHit: '+1', onBlock: '-4' }
+          ]
+        },
+        ken: {
+          name: 'Ken',
+          image: 'Ken.png',
+          description: '<strong>Ken Masters</strong> is an <em>aggressive rushdown character</em> with <u>excellent mobility</u> and combo potential. His <strong>Dragon Punch</strong> and <strong>Hadoken</strong> are enhanced versions of Ryu\'s moves.',
+          guidePdf: '/docs/ken-guide.pdf',
+          frameDataPdf: '/docs/ken-frame-data.pdf',
+          strengths: [
+            'Excellent rushdown',
+            'High mobility',
+            'Strong combo potential',
+            'Good pressure game'
+          ],
+          weaknesses: [
+            'Vulnerable to zoning',
+            'Requires good execution',
+            'Limited defensive options',
+            'Can be predictable'
+          ],
+          moves: [
+            { name: '5LP', startup: '4f', active: '3f', recovery: '7f', cancel: 'Chn Sp SA', damage: '300', guard: 'LH', onHit: '+4', onBlock: '-1' },
+            { name: '5MP', startup: '7f', active: '3f', recovery: '16f', cancel: 'SA Sp TC', damage: '700', guard: 'LH', onHit: '+1', onBlock: '-3' },
+            { name: '5HP', startup: '9f', active: '1/3f', recovery: '18/16f', cancel: 'Sp SA', damage: '400x2', guard: 'LH,LH', onHit: '+2', onBlock: '+1' },
+            { name: '2LP', startup: '4f', active: '3f', recovery: '8f', cancel: 'Chn Sp SA', damage: '300', guard: 'LH', onHit: '+4', onBlock: '-1' },
+            { name: '2MP', startup: '6f', active: '4f', recovery: '13/14f', cancel: 'Sp SA', damage: '600', guard: 'LH', onHit: '+5', onBlock: '-1' },
+            { name: '2HP', startup: '8f', active: '6/4f', recovery: '22/20f', cancel: 'Sp SA', damage: '800', guard: 'LH', onHit: '+1', onBlock: '-4' }
+          ]
+        },
+        chun_li: {
+          name: 'Chun-Li',
+          image: 'Chun-Li.png',
+          description: '<strong>Chun-Li</strong> is a <em>technical character</em> with <u>excellent footsies</u> and strong defensive options. Her <strong>Lightning Legs</strong> and <strong>Kikoken</strong> provide unique zoning tools.',
+          guidePdf: '/docs/chun-li-guide.pdf',
+          frameDataPdf: '/docs/chun-li-frame-data.pdf',
+          strengths: [
+            'Excellent footsies',
+            'Strong defensive options',
+            'Good zoning tools',
+            'High mobility'
+          ],
+          weaknesses: [
+            'Complex execution',
+            'Limited mix-up options',
+            'Vulnerable to pressure',
+            'Requires precise timing'
+          ],
+          moves: [
+            { name: '5LP', startup: '4f', active: '3f', recovery: '7f', cancel: 'Chn Sp SA', damage: '300', guard: 'LH', onHit: '+4', onBlock: '-1' },
+            { name: '5MP', startup: '7f', active: '3f', recovery: '16f', cancel: 'SA Sp TC', damage: '700', guard: 'LH', onHit: '+1', onBlock: '-3' },
+            { name: '5HP', startup: '9f', active: '1/3f', recovery: '18/16f', cancel: 'Sp SA', damage: '400x2', guard: 'LH,LH', onHit: '+2', onBlock: '+1' },
+            { name: '2LP', startup: '4f', active: '3f', recovery: '8f', cancel: 'Chn Sp SA', damage: '300', guard: 'LH', onHit: '+4', onBlock: '-1' },
+            { name: '2MP', startup: '6f', active: '4f', recovery: '13/14f', cancel: 'Sp SA', damage: '600', guard: 'LH', onHit: '+5', onBlock: '-1' },
+            { name: '2HP', startup: '8f', active: '6/4f', recovery: '22/20f', cancel: 'Sp SA', damage: '800', guard: 'LH', onHit: '+1', onBlock: '-4' }
           ]
         }
-        // Add other characters here...
       }
     }
   },
@@ -203,12 +293,37 @@ export default {
   },
   methods: {
     changeCharacter() {
-      // Logic for character change
+      const characterImage = document.querySelector('.character-img')
+      if (characterImage) {
+        characterImage.style.transform = 'scale(0.8)'
+        characterImage.style.transition = 'transform 0.3s ease'
+        
+        setTimeout(() => {
+          characterImage.style.transform = 'scale(1.05)'
+          setTimeout(() => {
+            characterImage.style.transform = 'scale(1)'
+          }, 150)
+        }, 150)
+      }
+      
+      const tableRows = document.querySelectorAll('.moves-table tbody tr')
+      tableRows.forEach((row, index) => {
+        row.style.animation = 'none'
+        setTimeout(() => {
+          row.style.animation = `fadeInRow 0.5s ease forwards ${index * 0.1}s`
+        }, 10)
+      })
+      
       console.log('Character changed to:', this.selectedCharacter)
     },
     showCharacterDetails() {
-      // Logic for showing character details
+      this.showModal = true
+      document.body.style.overflow = 'hidden'
       console.log('Showing details for:', this.currentCharacter.name)
+    },
+    closeModal() {
+      this.showModal = false
+      document.body.style.overflow = 'auto'
     },
     getFrameClass(value) {
       if (value.startsWith('+') || value.includes('KD')) {
@@ -218,6 +333,16 @@ export default {
       }
       return ''
     }
+  },
+  mounted() {
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.showModal) {
+        this.closeModal()
+      }
+    })
+  },
+  beforeUnmount() {
+    document.removeEventListener('keydown', this.handleKeydown)
   }
 }
 </script>

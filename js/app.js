@@ -1,4 +1,3 @@
-// Navbar toggle
 const menu = document.querySelector("#menu");
 const menuLinks = document.querySelector(".navbar__menu");
 
@@ -7,7 +6,6 @@ menu.addEventListener("click", function () {
   menuLinks.classList.toggle("active");
 });
 
-// Popup logic
 const signupBtn = document.getElementById("signupBtn");
 const popup = document.getElementById("popup");
 const popupOverlay = document.getElementById("popupOverlay");
@@ -41,7 +39,6 @@ registerTab.addEventListener("click", () => {
   loginForm.classList.remove("active");
 });
 
-// Registration Form Validation reloads 
 registerForm.addEventListener('submit', function (e) {
   e.preventDefault();
   
@@ -82,7 +79,6 @@ registerForm.addEventListener('submit', function (e) {
   location.reload();
 });
 
-// Navbar scroll effect puts orange effect below the navbar
 document.addEventListener("DOMContentLoaded", function () {
   const navbar = document.querySelector(".navbar");
 
@@ -95,7 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-// Video data and filters fill put in a json file if my prof lets me use node js
 const videoData = {
   videos: [
     {
@@ -206,7 +201,6 @@ characterSelect.addEventListener("change", () => {
   filterVideos(selectedCharacter);
 });
 
-// Character data for frame data page
 const characterData = {
   terry: {
     name: "Terry Bogard",
@@ -261,26 +255,22 @@ const characterData = {
   }
 };
 
-// Character switching function
 function changeCharacter() {
   const selector = document.getElementById('characterSelector');
   const character = characterData[selector.value];
   
   if (character) {
-    // Update character image
     const image = document.getElementById('characterImage');
     if (image) {
       image.src = character.image;
       image.alt = character.name;
       
-      // Add animation effect
       image.style.transform = 'scale(0.8)';
       setTimeout(() => {
         image.style.transform = 'scale(1)';
       }, 200);
     }
     
-    // Update character name
     const nameElement = document.getElementById('characterName');
     if (nameElement) {
       nameElement.textContent = character.name;
@@ -290,18 +280,15 @@ function changeCharacter() {
       }, 1000);
     }
     
-    // Update character description
     const descriptionElement = document.querySelector('.character-description');
     if (descriptionElement) {
       descriptionElement.innerHTML = character.description;
     }
     
-    // Update strengths and weaknesses
     updateCharacterInfo(character);
   }
 }
 
-// Update character info sections
 function updateCharacterInfo(character) {
   const strengthsList = document.querySelector('.info-section:first-child ul');
   const weaknessesList = document.querySelector('.info-section:last-child ol');
@@ -314,7 +301,6 @@ function updateCharacterInfo(character) {
       li.style.opacity = '0';
       strengthsList.appendChild(li);
       
-      // Animate list items
       setTimeout(() => {
         li.style.transition = 'opacity 0.5s ease';
         li.style.opacity = '1';
@@ -330,7 +316,6 @@ function updateCharacterInfo(character) {
       li.style.opacity = '0';
       weaknessesList.appendChild(li);
       
-      // Animate list items with delay
       setTimeout(() => {
         li.style.transition = 'opacity 0.5s ease';
         li.style.opacity = '1';
@@ -339,11 +324,9 @@ function updateCharacterInfo(character) {
   }
 }
 
-// Enhanced form validation with additional events
 document.addEventListener("DOMContentLoaded", function () {
   renderVideoList();
   
-  // Add mouseover event for character images
   const characterImage = document.getElementById('characterImage');
   if (characterImage) {
     characterImage.addEventListener('mouseover', function() {
@@ -357,7 +340,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   
-  // Add keydown event for character selector
   const characterSelector = document.getElementById('characterSelector');
   if (characterSelector) {
     characterSelector.addEventListener('keydown', function(e) {
@@ -367,7 +349,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   
-  // Add double-click event for table rows
   const tableRows = document.querySelectorAll('.moves-table tbody tr');
   tableRows.forEach(row => {
     row.addEventListener('dblclick', function() {
@@ -378,7 +359,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
   
-  // Add context menu event for table
   const movesTable = document.getElementById('movesTable');
   if (movesTable) {
     movesTable.addEventListener('contextmenu', function(e) {
@@ -387,13 +367,11 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
   
-  // Enhanced form validation with additional custom validations
   const registerForm = document.getElementById('registerForm');
   if (registerForm) {
     registerForm.addEventListener('input', function(e) {
       const input = e.target;
       
-      // Real-time validation feedback
       if (input.type === 'email') {
         const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
         if (emailPattern.test(input.value)) {
@@ -420,7 +398,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// CSS Animation function
 function animateElement(element, animation) {
   element.style.animation = animation;
   element.addEventListener('animationend', function() {
@@ -428,7 +405,6 @@ function animateElement(element, animation) {
   });
 }
 
-// Add animation to page load
 window.addEventListener('load', function() {
   const mainContent = document.querySelector('.mu-main');
   if (mainContent) {
@@ -436,9 +412,7 @@ window.addEventListener('load', function() {
   }
 });
 
-// Forum functionality
 document.addEventListener('DOMContentLoaded', function() {
-  // Forum modal functionality
   const newPostBtn = document.getElementById('newPostBtn');
   const newPostModal = document.getElementById('newPostModal');
   const closeBtn = document.querySelector('.close');
@@ -530,12 +504,10 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Add click events to forum posts
   const posts = document.querySelectorAll('.forum-post');
   posts.forEach(post => {
     post.addEventListener('click', function(e) {
       if (!e.target.classList.contains('read-more')) {
-        // Highlight the clicked post
         this.style.borderColor = '#f1644b';
         this.style.transform = 'scale(1.02)';
         
@@ -548,7 +520,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Create new forum post element
 function createNewPost(title, category, content) {
   const post = document.createElement('div');
   post.className = 'forum-post';
@@ -580,7 +551,6 @@ function createNewPost(title, category, content) {
   return post;
 }
 
-// Show notification function
 function showNotification(message, type) {
   const notification = document.createElement('div');
   notification.className = `notification ${type}`;
@@ -607,7 +577,6 @@ function showNotification(message, type) {
   }, 3000);
 }
 
-// Character details modal function
 function showCharacterDetails() {
   const modal = document.createElement('div');
   modal.className = 'character-details-modal';
@@ -655,7 +624,6 @@ function showCharacterDetails() {
   
   document.body.appendChild(modal);
   
-  // Add click outside to close
   modal.addEventListener('click', function(e) {
     if (e.target === modal) {
       modal.remove();

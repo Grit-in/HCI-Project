@@ -17,14 +17,24 @@
         </select>
       </div>
 
-      <div class="forum-posts" id="forumPosts">
+      <div class="forum-posts" id="forumPosts" ref="forumPostsContainer">
         <div 
           v-for="post in filteredPosts" 
           :key="post.id"
           class="forum-post"
           :data-category="post.category"
+          :data-post-id="post.id"
         >
-          <h2 class="post-title">{{ post.title }}</h2>
+          <div class="post-header">
+            <h2 class="post-title">{{ post.title }}</h2>
+            <button 
+              @click="deletePost(post.id)" 
+              class="delete-btn"
+              :title="`Delete post: ${post.title}`"
+            >
+              🗑️
+            </button>
+          </div>
           <p class="post-description" v-html="post.description"></p>
           <div class="post-meta">
             <p class="post-author">Posted by: <em>{{ post.author }}</em></p>
@@ -35,11 +45,13 @@
             <span class="views">👁️ {{ post.views }} views</span>
             <span class="replies">💬 {{ post.replies }} replies</span>
           </div>
-          <a href="#" @click.prevent="viewPost(post)" class="read-more">Read More</a>
+          <div class="post-actions">
+            <a href="#" @click.prevent="viewPost(post)" class="read-more">Read More</a>
+            <button @click="editPost(post)" class="edit-button">Edit</button>
+          </div>
         </div>
       </div>
       
-      <!-- New Post Modal -->
       <div id="newPostModal" class="modal" :class="{ active: showModal }">
         <div class="modal-content">
           <span class="close" @click="closeModal">&times;</span>
@@ -71,7 +83,6 @@
       </div>
     </div>
 
-    <!-- Footer -->
     <Footer />
   </div>
 </template>
@@ -134,7 +145,8 @@ export default {
           views: 123,
           replies: 23
         }
-      ]
+      ],
+      nextId: 5
     }
   },
   computed: {
@@ -145,24 +157,38 @@ export default {
       return this.posts.filter(post => post.category === this.selectedCategory);
     }
   },
+  mounted() {
+    this.addDOMEventListeners();
+    
+  },
+  beforeUnmount() {
+    this.removeDOMEventListeners();
+  },
   methods: {
-    showNewPostModal() {
-      this.showModal = true;
+    addDOMEventListeners() {
+      const forumContainer = document.querySelector('.forum-container');
+      if (forumContainer) {
+        forumContainer.addEventListener('click', this.handleContainerClick);
+      }
     },
-    closeModal() {
-      this.showModal = false;
-      this.resetNewPost();
+    
+    removeDOMEventListeners() {
+      const forumContainer = document.querySelector('.forum-container');
+      if (forumContainer) {
+        forumContainer.removeEventListener('click', this.handleContainerClick);
+      }
     },
-    resetNewPost() {
-      this.newPost = {
-        title: '',
-        category: '',
-        content: ''
-      };
+    
+    handleContainerClick(event) {
+      if (event.target.classList.contains('dynamic-element')) {
+        console.log('Clicked on dynamically created element:', event.target.textContent);
+      }
     },
-    createPost() {
+  
+    
+    createPostWithDOM() {
       const newPost = {
-        id: this.posts.length + 1,
+        id: this.nextId++,
         title: this.newPost.title,
         description: this.newPost.content,
         author: "CurrentUser",
@@ -173,18 +199,122 @@ export default {
       };
       
       this.posts.unshift(newPost);
+
+      const forumPosts = this.$refs.forumPostsContainer;
+      if (forumPosts) {
+        const postElement = document.createElement('div');
+        postElement.className = 'forum-post dynamic-post';
+        postElement.setAttribute('data-category', newPost.category);
+        postElement.setAttribute('data-post-id', newPost.id);
+        
+        postElement.innerHTML = `
+          <div class="post-header">
+            <h2 class="post-title">${newPost.title}</h2>
+            <button class="delete-btn" title="Delete post: ${newPost.title}">🗑️</button>
+          </div>
+          <p class="post-description">${newPost.description}</p>
+          <div class="post-meta">
+            <p class="post-author">Posted by: <em>${newPost.author}</em></p>
+            <p class="post-date">Date: <u>${newPost.date}</u></p>
+            <p class="post-category">Category: ${this.getCategoryName(newPost.category)}</p>
+          </div>
+          <div class="post-stats">
+            <span class="views">👁️ ${newPost.views} views</span>
+            <span class="replies">💬 ${newPost.replies} replies</span>
+          </div>
+          <div class="post-actions">
+            <a href="#" class="read-more">Read More</a>
+            <button class="edit-btn">Edit</button>
+          </div>
+        `;
+        
+        const deleteBtn = postElement.querySelector('.delete-btn');
+        deleteBtn.addEventListener('click', () => this.deletePostFromDOM(newPost.id));
+        
+        forumPosts.insertBefore(postElement, forumPosts.firstChild);
+        
+        postElement.style.opacity = '0';
+        postElement.style.transform = 'translateY(-20px)';
+        setTimeout(() => {
+          postElement.style.transition = 'all 0.3s ease';
+          postElement.style.opacity = '1';
+          postElement.style.transform = 'translateY(0)';
+        }, 10);
+      }
+      
       this.closeModal();
     },
+    
+    deletePostFromDOM(postId) {
+
+      const index = this.posts.findIndex(post => post.id === postId);
+      if (index > -1) {
+        this.posts.splice(index, 1);
+      }
+      
+      const postElement = document.querySelector(`[data-post-id="${postId}"]`);
+      if (postElement) {
+      
+        postElement.style.transition = 'all 0.3s ease';
+        postElement.style.opacity = '0';
+        postElement.style.transform = 'translateX(-100px)';
+        
+        setTimeout(() => {
+          postElement.remove();
+        }, 300);
+      }
+    },
+
+    showNewPostModal() {
+      this.showModal = true;
+    },
+    
+    closeModal() {
+      this.showModal = false;
+      this.resetNewPost();
+    },
+    
+    resetNewPost() {
+      this.newPost = {
+        title: '',
+        category: '',
+        content: ''
+      };
+    },
+    
+    createPost() {
+
+      this.createPostWithDOM();
+    },
+    
+    deletePost(postId) {
+      this.deletePostFromDOM(postId);
+    },
+    
     filterPosts() {
-      // Filtering is handled by computed property
+
       console.log('Filtering posts by category:', this.selectedCategory);
     },
+    
     viewPost(post) {
-      // This would navigate to a detailed post view
+
       console.log('Viewing post:', post.title);
-      // For now, just show an alert
+
       alert(`Viewing post: ${post.title}`);
     },
+    
+    editPost(post) {
+
+      this.newPost = {
+        title: post.title,
+        category: post.category,
+        content: post.description
+      };
+      this.showModal = true;
+    },
+    
+
+    
     getCategoryName(category) {
       const categories = {
         'general': 'General Discussion',
