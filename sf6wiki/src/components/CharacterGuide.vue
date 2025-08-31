@@ -1,19 +1,21 @@
 <template>
-  <div class="character-guide">
-    <!-- Main Content -->
-    <div class="main-container">
-      <!-- Filter Section -->
-      <div class="filter-section">
-        <div class="filter-card">
-          <h2 class="filter-title">Filter Videos</h2>
-          <div class="filter-content">
-            <label class="filter-label">Select Character:</label>
-            <div class="select-wrapper">
+  <div class="character-guide-page">
+    <div class="mu-main">
+      <aside class="filter-sidebar">
+        <div class="filter-header">
+          <h3>Filter Videos</h3>
+          <p class="filter-subtitle">Select a character to find tech videos</p>
+        </div>
+        <div class="filter-content">
+          <div class="filter-group">
+            <label for="characterSelect">Character:</label>
+            <div class="custom-dropdown">
               <select 
-                v-model="selectedCharacter" 
+                id="characterSelect" 
+                v-model="selectedCharacter"
                 @change="filterVideos"
-                class="character-select"
               >
+                <option value="" disabled>Choose a character</option>
                 <option value="universal">All Characters</option>
                 <option value="terry">Terry</option>
                 <option value="bison">M.Bison</option>
@@ -38,64 +40,88 @@
                 <option value="ryu">Ryu</option>
                 <option value="chun_li">Chun-Li</option>
                 <option value="luke">Luke</option>
+                <option value="mai">Mai</option>
               </select>
-              <div class="select-arrow">▼</div>
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Videos Section -->
-      <div class="videos-section">
+      </aside>
+      
+      <main class="videos-main">
         <div class="videos-header">
-          <h2 class="videos-title">Character Guide Videos</h2>
-          <div class="videos-count">
-            <span>{{ filteredVideos.length }} videos</span>
+          <div class="header-content">
+            <h2 class="videos-title">Character Tech Videos</h2>
+            <p class="videos-subtitle">Advanced techniques and character-specific tech</p>
+          </div>
+          <div class="videos-stats">
+            <div class="stat-item">
+              <span class="stat-number">{{ filteredVideos.length }}</span>
+              <span class="stat-label"> Videos</span>
+            </div>
           </div>
         </div>
-
+        
         <!-- Videos Grid -->
-        <div class="videos-grid" v-if="filteredVideos.length > 0">
-          <div 
-            v-for="video in filteredVideos" 
-            :key="video.title"
-            class="video-card"
-          >
-            <div class="video-thumbnail">
-              <video controls class="video-player">
-                <source :src="video.videoSrc" type="video/mp4">
-                Your browser does not support the video tag.
-              </video>
-            </div>
-            <div class="video-info">
-              <h3 class="video-title">{{ video.title }}</h3>
-              <div class="video-tags">
-                <span 
-                  v-for="character in video.characters.filter(c => c !== 'universal')" 
-                  :key="character"
-                  class="tag character-tag"
-                >
-                  {{ character }}
-                </span>
-                <span 
-                  v-for="keyword in video.keywords" 
-                  :key="keyword"
-                  class="tag keyword-tag"
-                >
-                  {{ keyword }}
-                </span>
+        <div class="videos-container" v-if="filteredVideos.length > 0">
+          <div class="videos-grid">
+            <article 
+              v-for="video in filteredVideos" 
+              :key="video.title"
+              class="video-card"
+            >
+              <div class="video-media">
+                <div class="video-thumbnail">
+                  <video controls class="video-player">
+                    <source :src="video.videoSrc" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+                <div class="video-overlay">
+                  <div class="play-button">
+                    <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
+                      <path d="M8 5v14l11-7z" fill="currentColor"/>
+                    </svg>
+                  </div>
+                </div>
               </div>
-            </div>
+              
+              <div class="video-content">
+                <h3 class="video-title">{{ video.title }}</h3>
+                <div class="video-meta">
+                  <div class="video-tags">
+                    <span 
+                      v-for="character in video.characters.filter(c => c !== 'universal')" 
+                      :key="character"
+                      class="tag character-tag"
+                    >
+                      {{ character.toUpperCase() }}
+                    </span>
+                    <span 
+                      v-for="keyword in video.keywords" 
+                      :key="keyword"
+                      class="tag keyword-tag"
+                    >
+                      {{ keyword.toUpperCase() }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
 
         <!-- Empty State -->
         <div v-else class="empty-state">
-          <div class="empty-icon">🎮</div>
-          <h3 class="empty-title">No videos found</h3>
-          <p class="empty-message">Try selecting a different character or check back later for new content.</p>
+          <div class="empty-content">
+            <div class="empty-icon">🎮</div>
+            <h3 class="empty-title">No videos found</h3>
+            <p class="empty-message">Try selecting a different character or check back later for new content.</p>
+            <button @click="selectedCharacter = 'universal'" class="empty-action">
+              View All Videos
+            </button>
+          </div>
         </div>
-      </div>
+      </main>
     </div>
 
     <!-- Footer -->
@@ -170,8 +196,10 @@ export default {
   },
   computed: {
     filteredVideos() {
-      if (this.selectedCharacter === 'universal') {
+      if (!this.selectedCharacter || this.selectedCharacter === '') {
         return this.videoData.videos;
+      } else if (this.selectedCharacter === 'universal') {
+        return this.videoData.videos; // Show all videos when universal is selected
       } else {
         return this.videoData.videos.filter(video => 
           video.characters.includes(this.selectedCharacter)
@@ -183,6 +211,7 @@ export default {
     filterVideos() {
       // This method is called when the select changes
       // The filtering is handled by the computed property
+      console.log('Filtering videos for:', this.selectedCharacter);
     }
   }
 }
