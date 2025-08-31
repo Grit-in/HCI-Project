@@ -43,11 +43,8 @@ body {
 
 .character-guide-page .filter-sidebar {
   flex: 0 0 350px;
-  background: rgba(255, 255, 255, 0.05);
   border-radius: 15px;
   padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   position: relative;
   z-index: 1;
@@ -1018,8 +1015,6 @@ video {
   background: linear-gradient(145deg, #1a1a1a, #141414);
   border-radius: 20px;
   padding: 30px;
-  box-shadow: 0 15px 40px rgba(241, 100, 75, 0.15);
-  border: 2px solid rgba(241, 100, 75, 0.2);
   position: sticky;
   top: 20px;
   height: fit-content;
@@ -1098,7 +1093,7 @@ video {
 }
 
 .character-guide-page .mu-main select:focus {
-  border-color: #f1644b;
+  border-color: #c7c7c7;
   box-shadow: 0 0 15px rgba(241, 100, 75, 0.3);
   outline: none;
   transform: translateY(-2px);
@@ -1116,11 +1111,11 @@ video {
 
 .character-guide-page .custom-dropdown select {
   width: 100%;
-  padding: 12px 15px;
-  border: 2px solid #dd8238f8;
-  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  border: 2px solid #f1644b;
+  border-radius: 2px;
   font-size: 1rem;
-  background: linear-gradient(145deg, #2b2a2a, #1a1a1a);
+  background: #c7c7c7;
   color: #fff;
   appearance: none;
   transition: all 0.3s ease;
@@ -1128,21 +1123,19 @@ video {
 }
 
 .character-guide-page .custom-dropdown select option {
-  background: #2b2a2a;
-  color: #fff;
+  background: #f0f0f0;
+  color: #141414;
   padding: 8px;
 }
 
 .character-guide-page .custom-dropdown select:focus {
-  border-color: #f1644b;
-  box-shadow: 0 0 15px rgba(241, 100, 75, 0.3);
   outline: none;
-  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(241, 100, 75, 0.5);
 }
 
 .character-guide-page .custom-dropdown select:hover {
-  border-color: #f1644b;
-  transform: translateY(-1px);
+  background: #f1644b;
+  color: #ff0000;
 }
 
 /* Character Stats */
@@ -1553,35 +1546,35 @@ video {
 
 .matchup-guide-page .custom-dropdown select {
   width: 100%;
-  padding: 14px 16px;
-  border: 2px solid rgba(241, 100, 75, 0.3);
-  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  border: 2px solid #f1644b;
+  border-radius: 2px;
   font-size: 1rem;
-  background: linear-gradient(145deg, #2b2a2a, #1a1a1a);
+  background: #f1644b;
   color: #fff;
   appearance: none;
   transition: all 0.3s ease;
   cursor: pointer;
-  font-weight: 500;
 }
 
 .matchup-guide-page .custom-dropdown select option {
-  background: #2b2a2a;
+  background: #f1644b;
   color: #fff;
   padding: 12px;
   font-weight: 500;
 }
 
 .matchup-guide-page .custom-dropdown select:focus {
-  border-color: #f1644b;
-  box-shadow: 0 0 20px rgba(241, 100, 75, 0.2);
   outline: none;
-  transform: translateY(-2px);
+  box-shadow: 0 0 10px rgba(241, 100, 75, 0.5);
 }
 
 .matchup-guide-page .custom-dropdown select:hover {
+  background: #f1644b;
+  color: #fff;
   border-color: #f1644b;
   transform: translateY(-1px);
+  box-shadow: 0 8px 25px rgba(241, 100, 75, 0.2);
 }
 
 /* MatchUp Guide Main Content */
@@ -1916,9 +1909,9 @@ video {
   width: 100%;
   padding: 14px 16px;
   border: 2px solid rgba(241, 100, 75, 0.3);
-  border-radius: 12px;
+  border-radius: 2px;
   font-size: 1rem;
-  background: linear-gradient(145deg, #2b2a2a, #1a1a1a);
+  background: #f1644b;
   color: #fff;
   appearance: none;
   transition: all 0.3s ease;
@@ -1927,7 +1920,7 @@ video {
 }
 
 .character-guide-page .custom-dropdown select option {
-  background: #2b2a2a;
+  background: #f1644b;
   color: #fff;
   padding: 12px;
   font-weight: 500;
@@ -1943,6 +1936,8 @@ video {
 .character-guide-page .custom-dropdown select:hover {
   border-color: #f1644b;
   transform: translateY(-1px);
+  color: #fff;
+  box-shadow: 0 8px 25px rgba(241, 100, 75, 0.2);
 }
 
 .character-guide-page .videos-main {
@@ -2074,17 +2069,18 @@ video {
 }
 
 .character-guide-page .video-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .character-guide-page .video-card:hover .video-overlay {
@@ -2102,6 +2098,7 @@ video {
   color: white;
   transition: all 0.3s ease;
   transform: scale(0.8);
+  pointer-events: none;
 }
 
 .character-guide-page .video-card:hover .play-button {
@@ -3139,8 +3136,6 @@ video {
   background: linear-gradient(135deg, #1e1e1e 0%, #161616 100%);
   border-radius: 16px;
   padding: 30px;
-  border: 2px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
   position: relative;
   transition: all 0.3s ease;
   backdrop-filter: blur(15px);
@@ -3166,8 +3161,6 @@ video {
 
 .character-guide .filter-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 25px 70px rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .character-guide .filter-title {
@@ -3738,6 +3731,17 @@ video {
 .category-filter:focus {
   outline: none;
   box-shadow: 0 0 10px rgba(241, 100, 75, 0.5);
+}
+
+.category-filter:hover {
+  background: #f1644b;
+  color: #fff;
+}
+
+.category-filter option {
+  background: #f0f0f0;
+  color: #141414;
+  padding: 8px;
 }
 
 /* Forum Posts */

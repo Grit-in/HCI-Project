@@ -13,8 +13,7 @@
               <select 
                 id="characterSelect" 
                 v-model="selectedCharacter"
-                @change="filterVideos"
-              >
+                @change="filterVideos">
                 <option value="" disabled>Choose a character</option>
                 <option value="universal">All Characters</option>
                 <option value="terry">Terry</option>
@@ -75,13 +74,6 @@
                     <source :src="video.videoSrc" type="video/mp4">
                     Your browser does not support the video tag.
                   </video>
-                </div>
-                <div class="video-overlay">
-                  <div class="play-button">
-                    <svg width="44" height="44" viewBox="0 0 24 24" fill="none">
-                      <path d="M8 5v14l11-7z" fill="currentColor"/>
-                    </svg>
-                  </div>
                 </div>
               </div>
               
